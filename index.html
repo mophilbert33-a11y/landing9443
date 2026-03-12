@@ -1,391 +1,415 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>suenergiacolombia — Ciclismo, rutas y entrenamiento</title>
-  <meta name="description" content="suenergiacolombia: análisis, rutas, entrenamiento y recursos para ciclistas urbanos y de ruta. Contenido profesional, boletines y colaboraciones." />
-  <meta name="author" content="TECH ACCESS FZ-LLC" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuEnergiaColombia | Blog Informativo de Energías Limpias</title>
+    <meta name="description" content="Blog informativo sobre energías renovables, transición energética y sostenibilidad ambiental.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ================= Reset y Variables ================= */
+        :root {
+            --primary-color: #2E7D32; /* Verde ecológico */
+            --secondary-color: #1B5E20;
+            --text-color: #333333;
+            --bg-color: #F5F7F5;
+            --white: #FFFFFF;
+        }
 
-  <style>
-    /* Minimal & professional */
-    :root{
-      --bg:#ffffff;
-      --text:#0b1220;
-      --muted:#6b7280;
-      --accent:#ef6c00; /* naranja ciclismo */
-      --surface:#f7f8fa;
-      --card:#ffffff;
-      --maxw:1100px;
-      --radius:12px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background:var(--surface);
-      color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
-    }
-    a{color:var(--accent); text-decoration:none}
-    img{max-width:100%;height:auto;display:block}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
 
-    .container{max-width:var(--maxw);margin:0 auto;padding:28px;}
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
 
-    /* Header */
-    header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:6px 0}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{
-      width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,#0b1220,var(--accent));
-      display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:18px;
-      box-shadow:0 8px 24px rgba(11,18,32,0.06);
-    }
-    .brand h1{margin:0;font-size:18px;letter-spacing:0.3px}
-    nav{display:flex;gap:16px;align-items:center}
-    nav a{font-size:14px;color:var(--muted)}
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-    /* Hero */
-    .hero{
-      display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:center;margin:28px 0;
-    }
-    .hero-main{
-      background:var(--card);padding:36px;border-radius:14px;box-shadow:0 12px 36px rgba(11,18,32,0.04);
-    }
-    .kicker{color:var(--accent);font-weight:700;font-size:13px;letter-spacing:0.6px;margin-bottom:10px}
-    .hero-main h2{margin:0 0 12px;font-size:32px;line-height:1.04}
-    .lead{color:var(--muted);margin:0 0 18px}
+        /* ================= Navegación ================= */
+        nav {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
 
-    .hero-side{
-      background:#fff;border-radius:12px;padding:18px;border:1px solid #eef1f4;
-    }
-    .subscribe input[type="email"]{width:100%;padding:12px;border-radius:10px;border:1px solid #e6e9ee;margin-bottom:10px;font-size:14px}
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .btn{
-      display:inline-block;padding:10px 14px;border-radius:10px;font-weight:700;border:0;cursor:pointer;font-size:14px;
-    }
-    .btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 24px rgba(239,108,0,0.12)}
-    .btn-outline{background:transparent;border:1px solid #e9eef0;color:var(--text)}
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+        }
 
-    /* Cards / Grid */
-    .grid{
-      display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:26px 0;
-    }
-    .card{
-      background:var(--card);border-radius:12px;padding:16px;border:1px solid #f3f5f7;box-shadow:0 8px 20px rgba(11,18,32,0.03);
-    }
-    .card h3{margin:0 0 8px;font-size:16px}
-    .meta{color:var(--muted);font-size:13px;margin-bottom:8px}
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
 
-    /* Two-column layout */
-    .two-col{display:grid;grid-template-columns:1fr 360px;gap:22px;align-items:start}
+        .nav-links a {
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
 
-    /* Footer / legal */
-    footer{margin-top:36px;padding:28px;background:#0b0f13;color:#e6f7f6;border-radius:12px}
-    .footer-grid{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between}
-    .footer-col{min-width:220px}
-    .muted{color:#9fb3b5;font-size:14px}
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
 
-    /* cookie */
-    #cookie{position:fixed;left:16px;right:16px;bottom:18px;background:#fff;border-radius:12px;padding:12px;box-shadow:0 12px 40px rgba(2,6,23,0.12);max-width:980px;margin:auto;display:flex;gap:12px;align-items:center;z-index:999}
+        /* Menú Hamburguesa (Móvil) */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
 
-    /* Responsive */
-    @media (max-width:1000px){
-      .hero{grid-template-columns:1fr}
-      .two-col{grid-template-columns:1fr}
-      .grid{grid-template-columns:repeat(2,1fr)}
-      nav{display:none}
-    }
-    @media (max-width:640px){
-      .grid{grid-template-columns:1fr}
-      header{flex-direction:column;align-items:flex-start;gap:12px}
-      .footer-grid{flex-direction:column}
-    }
+        .menu-toggle span {
+            height: 3px;
+            width: 25px;
+            background-color: var(--primary-color);
+            margin-bottom: 4px;
+            border-radius: 2px;
+        }
 
-    /* Utilities */
-    .muted-small{color:var(--muted);font-size:13px}
-    .separator{height:1px;background:#f3f5f7;margin:18px 0;border-radius:2px}
-    .chip{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid #f3f5f7;font-weight:700;font-size:13px}
-  </style>
+        /* ================= Hero Section ================= */
+        .hero {
+            margin-top: 70px;
+            background: linear-gradient(rgba(27, 94, 32, 0.8), rgba(46, 125, 50, 0.8)), url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover;
+            color: var(--white);
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* ================= Secciones Generales ================= */
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--secondary-color);
+        }
+
+        /* ================= Información / Blog ================= */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* ================= Contacto ================= */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        /* ================= Políticas y Legales ================= */
+        .legal-content {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .legal-content h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        /* ================= Footer ================= */
+        footer {
+            background-color: #222;
+            color: #ddd;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .company-info {
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .company-name {
+            font-weight: 700;
+            color: var(--white);
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .footer-links {
+            margin-top: 20px;
+        }
+
+        .footer-links a {
+            margin: 0 10px;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+
+        /* ================= Responsive ================= */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                padding: 20px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="brand" aria-label="suenergiacolombia">
-        <div class="logo" aria-hidden="true">SC</div>
-        <div>
-          <h1>suenergiacolombia</h1>
-          <div class="muted-small">Ciclismo • Rutas • Entrenamiento</div>
-        </div>
-      </div>
 
-      <nav aria-label="Navegación principal">
-        <a href="#rutas">Rutas</a>
-        <a href="#entrenamiento">Entrenamiento</a>
-        <a href="#contacto">Contacto</a>
-        <a href="#legal">Políticas</a>
-      </nav>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">SuEnergiaColombia</div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-links" id="nav-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#nosotros">Sobre Nosotros</a>
+                <a href="#contacto">Contacto</a>
+                <a href="#politicas">Políticas</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero" id="inicio">
+        <h1>El Futuro es Renovable y Sostenible</h1>
+        <p>Aprende, infórmate y descubre cómo la transición hacia las energías limpias está transformando a Colombia y al mundo.</p>
+        <a href="#nosotros"><button class="btn">Conocer Más</button></a>
     </header>
 
-    <!-- Hero -->
-    <section class="hero" aria-label="Presentación">
-      <div class="hero-main">
-        <div class="kicker">CONFIABLE Y PRÁCTICO</div>
-        <h2>Rutas, técnica y entrenamiento para ciclistas en Colombia</h2>
-        <p class="lead">Publicamos guías de rutas, análisis de entrenamiento, reseñas de material y recursos para clubes y ciclistas urbanos y de ruta. Contenido profesional y actualizado.</p>
-
-        <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <a class="btn btn-primary" href="#rutas">Explorar rutas</a>
-          <a class="btn btn-outline" href="#contacto">Colabora</a>
+    <section class="section" id="nosotros">
+        <h2 class="section-title">Información sobre Energías Limpias</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Energía Solar</h3>
+                <p>La radiación solar es una fuente inagotable. Descubre cómo los paneles fotovoltaicos están reduciendo la huella de carbono y disminuyendo los costos a largo plazo.</p>
+            </div>
+            <div class="card">
+                <h3>Energía Eólica</h3>
+                <p>Aprovechando la fuerza del viento, las turbinas eólicas generan electricidad sin emisiones, siendo un pilar fundamental para la sostenibilidad energética.</p>
+            </div>
+            <div class="card">
+                <h3>Transición Energética</h3>
+                <p>Te explicamos de manera sencilla las normativas, avances tecnológicos y los pasos que se están dando hacia un modelo energético totalmente limpio.</p>
+            </div>
         </div>
-      </div>
-
-      <aside class="hero-side" aria-labelledby="subscribeTitle">
-        <div id="subscribeTitle" style="font-weight:700;margin-bottom:8px">Boletín mensual</div>
-        <div class="muted-small">Recibe rutas destacadas, entrenamientos y descuentos de patrocinadores responsables.</div>
-
-        <form id="subscribeForm" class="subscribe" style="margin-top:12px" aria-label="Formulario de suscripción">
-          <label for="email" class="muted-small">Correo electrónico</label>
-          <input id="email" type="email" placeholder="tu@correo.com" required />
-          <button class="btn btn-primary" style="width:100%;margin-top:8px" type="submit">Suscribirme</button>
-          <div id="subMsg" class="muted-small" style="margin-top:10px"></div>
-        </form>
-
-        <div style="margin-top:14px" class="muted-small">
-          Transparencia: política de privacidad, términos y datos de verificación visibles en el footer.
-        </div>
-      </aside>
     </section>
 
-    <!-- Rutas / Artículos -->
-    <section id="rutas" aria-label="Rutas y artículos">
-      <div style="display:flex;justify-content:space-between;align-items:end">
-        <h2 style="margin:0">Rutas y artículos</h2>
-        <a href="#archive" class="muted-small">Archivo →</a>
-      </div>
-
-      <div class="grid" role="list" aria-busy="false">
-        <article class="card" role="listitem">
-          <div class="meta">Guía · 01 marzo 2026</div>
-          <h3>Ruta: Bogotá - La Calera (retos y consejos)</h3>
-          <p class="muted-small">Perfil, puntos de interés y recomendaciones de seguridad para la ascensión.</p>
-        </article>
-
-        <article class="card" role="listitem">
-          <div class="meta">Entrenamiento · 18 febrero 2026</div>
-          <h3>Intervalos específicos para mejorar FTP</h3>
-          <p class="muted-small">Sesiones estructuradas y progresiones para ciclistas de ruta.</p>
-        </article>
-
-        <article class="card" role="listitem">
-          <div class="meta">Equipo · 02 febrero 2026</div>
-          <h3>Qué buscar en una bicicleta de gravel</h3>
-          <p class="muted-small">Comparativa de geometrías, neumáticos y accesorios esenciales.</p>
-        </article>
-      </div>
+    <section class="section" id="contacto">
+        <h2 class="section-title">Formulario de Contacto</h2>
+        <div class="contact-form">
+            <p style="margin-bottom: 20px; text-align: center;">¿Tienes dudas sobre nuestro contenido informativo? Escríbenos.</p>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo</label>
+                    <input type="text" id="nombre" required placeholder="Ej: Juan Pérez">
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" required placeholder="ejemplo@correo.com">
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" rows="5" required placeholder="Escribe tu consulta aquí..."></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Enviar Mensaje</button>
+            </form>
+        </div>
     </section>
 
-    <!-- Recursos y contacto -->
-    <section class="two-col" aria-label="Recursos y contacto">
-      <div>
-        <h3>Recursos útiles</h3>
-        <p class="muted-small">Mapas GPX, plantillas de entrenamiento descargables y guías de mantenimiento básico.</p>
+    <section class="section" id="politicas">
+        <h2 class="section-title">Información Legal</h2>
+        
+        <div class="legal-content">
+            <h3>Política de Privacidad</h3>
+            <p>En SuEnergiaColombia, accesible desde este sitio web, una de nuestras principales prioridades es la privacidad de nuestros visitantes. Este documento de Política de Privacidad contiene los tipos de información que son recopilados y registrados por nosotros y cómo los utilizamos. No vendemos ni compartimos su información personal con terceros para fines comerciales sin su consentimiento explícito.</p>
+            
+            <h3>Términos y Condiciones</h3>
+            <p>El uso de este sitio web está sujeto a los siguientes términos de uso. El contenido de las páginas de este sitio web es solo para su información general y uso. Está sujeto a cambios sin previo aviso. Este blog es de carácter estrictamente informativo y educativo sobre energías limpias. No garantizamos la exactitud, puntualidad, rendimiento, integridad o idoneidad de la información y los materiales encontrados o ofrecidos en este sitio para ningún propósito particular.</p>
 
-        <div class="separator"></div>
-
-        <h4>Colaboraciones</h4>
-        <p class="muted-small">Trabajamos con clubes locales, entrenadores y marcas para proyectos editoriales y campañas, siempre divulgadas con transparencia.</p>
-      </div>
-
-      <aside id="contacto" class="hero-side" aria-labelledby="contactoTitle">
-        <div id="contactoTitle" style="font-weight:700">Contacto</div>
-        <p class="muted-small">Consultas editoriales, propuestas de colaboración o publicidad: usa el formulario o escribe directamente.</p>
-
-        <form id="contactForm" aria-label="Formulario de contacto">
-          <label for="cname" class="muted-small">Nombre</label>
-          <input id="cname" type="text" placeholder="Tu nombre" required />
-
-          <label for="cmail" class="muted-small">Correo</label>
-          <input id="cmail" type="email" placeholder="tu@correo.com" required />
-
-          <label for="cmsg" class="muted-small">Mensaje</label>
-          <textarea id="cmsg" placeholder="Escribe tu consulta..." required style="min-height:120px"></textarea>
-
-          <button class="btn btn-primary" style="width:100%;margin-top:8px" type="submit">Enviar</button>
-          <div id="contactMsg" class="muted-small" style="margin-top:10px"></div>
-        </form>
-
-        <div style="margin-top:12px" class="muted-small">
-          Contacto directo: Morgane PHILBERT — <a href="mailto:mo.philbert33@gmail.com">mo.philbert33@gmail.com</a>
+            <h3>Descargo de Responsabilidad</h3>
+            <p>La información proporcionada en SuEnergiaColombia no constituye asesoramiento financiero, legal ni técnico profesional. Las opiniones expresadas son meramente informativas.</p>
         </div>
-      </aside>
     </section>
 
-    <!-- Políticas y términos -->
-    <section id="legal" aria-label="Políticas y términos">
-      <h3>Políticas y términos</h3>
+    <footer>
+        <div class="footer-container">
+            <div class="company-info">
+                <div class="company-name">TECH ACCESS FZ-LLC</div>
+                Offices G01 and G03, Building Number 1, Dubai Internet City<br>
+                Dubai<br>
+                Emiratos Árabes Unidos
+            </div>
+            
+            <div class="footer-links">
+                <a href="#politicas">Política de Privacidad</a>
+                <a href="#politicas">Términos y Condiciones</a>
+                <a href="#contacto">Contacto</a>
+            </div>
 
-      <div class="card" style="margin-top:12px">
-        <h4 id="privacy">Política de privacidad</h4>
-        <p class="muted-small">Recolectamos datos mínimos para suscripciones y contacto (nombre, correo, mensaje). No vendemos información; solo compartimos con proveedores que cumplen con obligaciones de privacidad o por requerimiento legal. Para solicitudes de acceso, rectificación o eliminación escribe a <a href="mailto:mo.philbert33@gmail.com">mo.philbert33@gmail.com</a>.</p>
-
-        <h4 id="cookies" style="margin-top:12px">Política de cookies</h4>
-        <p class="muted-small">Usamos cookies esenciales y de análisis anónimo. Los usuarios pueden aceptar o gestionar preferencias mediante el control de cookies disponible en la página.</p>
-
-        <h4 id="terms" style="margin-top:12px">Términos y condiciones</h4>
-        <p class="muted-small">El contenido es informativo; no sustituye asesoría profesional. El uso del sitio implica aceptación de estos términos. Para usos comerciales del contenido, contacte al equipo editorial para acuerdos por escrito.</p>
-
-        <h4 style="margin-top:12px">Publicidad y divulgación</h4>
-        <p class="muted-small">Cualquier contenido patrocinado o afiliado será claramente marcado. Publicamos datos de verificación del anunciante y datos de contacto en el footer para transparencia con plataformas publicitarias.</p>
-      </div>
-    </section>
-
-    <!-- Verificación del anunciante -->
-    <section aria-labelledby="advVerify" style="margin-top:18px">
-      <h4 id="advVerify">Verificación del anunciante</h4>
-      <div class="card" style="margin-top:8px">
-        <p class="muted-small"><strong>Nombre de verificación:</strong> JUAN JOSE GUAIGUA GARCIA</p>
-        <p class="muted-small"><strong>Dirección:</strong> c9 #48, El Alto, Bolivia</p>
-        <p class="muted-small">Estos datos se publican por transparencia y cumplimiento con requisitos publicitarios.</p>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer aria-label="Pie de página">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <div style="font-weight:800">suenergiacolombia</div>
-          <div class="muted">Blog de ciclismo — rutas, entrenamiento y comunidad.</div>
+            <p style="margin-top: 20px; font-size: 12px; color: #888;">
+                &copy; <span id="year"></span> SuEnergiaColombia. Todos los derechos reservados.
+            </p>
         </div>
-
-        <div class="footer-col">
-          <div style="font-weight:700">Organización</div>
-          <div class="muted-small">
-            TECH ACCESS FZ-LLC<br>
-            Offices G01 and G03, Building Number 1, Dubai Internet City<br>
-            Dubai, Emiratos Árabes Unidos
-          </div>
-        </div>
-
-        <div class="footer-col">
-          <div style="font-weight:700">Contacto</div>
-          <div class="muted-small">
-            Morgane PHILBERT<br>
-            <a href="mailto:mo.philbert33@gmail.com">mo.philbert33@gmail.com</a>
-          </div>
-
-          <div style="margin-top:12px">
-            <div style="font-weight:700">Verificación anunciante</div>
-            <div class="muted-small">JUAN JOSE GUAIGUA GARCIA — c9 #48, El Alto, Bolivia</div>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-top:18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-        <div class="muted-small">© <span id="year"></span> TECH ACCESS FZ-LLC. Todos los derechos reservados.</div>
-        <div class="muted-small">Política de privacidad • Términos • Contacto accesibles</div>
-      </div>
     </footer>
-  </div>
 
-  <!-- Cookie banner -->
-  <div id="cookie" role="dialog" aria-live="polite" class="hidden">
-    <div style="flex:1">
-      <div style="font-weight:700">Uso de cookies</div>
-      <div class="muted-small">Usamos cookies para funciones esenciales, análisis anónimo y preferencias. Puedes aceptar o gestionar preferencias.</div>
-    </div>
-    <div style="display:flex;gap:8px;align-items:center">
-      <button id="manageCookies" class="btn btn-outline">Gestionar</button>
-      <button id="acceptCookies" class="btn btn-primary">Aceptar</button>
-    </div>
-  </div>
+    <script>
+        // Actualizar año automático en el footer
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-  <script>
-    // año dinámico
-    document.getElementById('year').textContent = new Date().getFullYear();
+        // Funcionalidad del Menú Hamburguesa para Móviles
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
 
-    // Cookie banner logic
-    const cookieEl = document.getElementById('cookie');
-    if (!localStorage.getItem('suenergiacol_cookies_ok')) {
-      cookieEl.classList.remove('hidden');
-    }
-    document.getElementById('acceptCookies').addEventListener('click', () => {
-      localStorage.setItem('suenergiacol_cookies_ok','1');
-      cookieEl.classList.add('hidden');
-    });
-    document.getElementById('manageCookies').addEventListener('click', () => {
-      alert('En producción, aquí se mostrarían preferencias de cookies para aceptar o rechazar categorías.'); // placeholder
-    });
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
 
-    // Suscripción (simulada)
-    document.getElementById('subscribeForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = document.getElementById('email').value.trim();
-      const msg = document.getElementById('subMsg');
-      if (!/^\S+@\S+\.\S+$/.test(email)) {
-        msg.textContent = 'Introduce un correo válido.';
-        return;
-      }
-      msg.textContent = 'Gracias. Revisa tu correo para confirmar la suscripción.';
-      e.target.reset();
-    });
+        // Cerrar menú al hacer clic en un enlace (Móviles)
+        const links = document.querySelectorAll('.nav-links a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                if(navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
 
-    // Contacto (simulado)
-    document.getElementById('contactForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('cname').value.trim();
-      const email = document.getElementById('cmail').value.trim();
-      const message = document.getElementById('cmsg').value.trim();
-      const out = document.getElementById('contactMsg');
-      if (!name || !email || !message) {
-        out.textContent = 'Completa todos los campos.';
-        return;
-      }
-      if (!/^\S+@\S+\.\S+$/.test(email)) {
-        out.textContent = 'Correo no válido.';
-        return;
-      }
-      out.innerHTML = '<div style="background:#eaf9f6;border-left:4px solid '+getComputedStyle(document.documentElement).getPropertyValue("--accent")+';padding:10px;border-radius:6px;color:#083a33">Mensaje recibido. Gracias por contactarnos.</div>';
-      e.target.reset();
-    });
-
-    // Accessibility: keyboard focus hint
-    (function(){
-      function onFirstTab(e){
-        if (e.key === 'Tab') {
-          document.documentElement.classList.add('user-is-tabbing');
-          window.removeEventListener('keydown', onFirstTab);
-        }
-      }
-      window.addEventListener('keydown', onFirstTab);
-    })();
-
-    console.log('suenergiacolombia — página cargada con políticas y contacto visibles.');
-  </script>
-
-  <!-- JSON-LD: organización (transparencia) -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"TECH ACCESS FZ-LLC",
-    "address":{
-      "@type":"PostalAddress",
-      "streetAddress":"Offices G01 and G03, Building Number 1, Dubai Internet City",
-      "addressLocality":"Dubai",
-      "addressCountry":"AE"
-    },
-    "contactPoint":[
-      {
-        "@type":"ContactPoint",
-        "contactType":"editorial",
-        "email":"mo.philbert33@gmail.com",
-        "name":"Morgane PHILBERT"
-      }
-    ]
-  }
-  </script>
+        // Manejo del formulario de contacto
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Aquí iría la lógica de conexión con el backend (PHP, Node, etc.)
+            alert('¡Gracias por tu mensaje! Hemos recibido tu consulta y te responderemos pronto.');
+            contactForm.reset();
+        });
+    </script>
 </body>
 </html>
