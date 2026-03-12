@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>suenergiacolombia — Ciclismo, rutas y entrenamiento</title>
+  <meta name="description" content="suenergiacolombia: análisis, rutas, entrenamiento y recursos para ciclistas urbanos y de ruta. Contenido profesional, boletines y colaboraciones." />
+  <meta name="author" content="TECH ACCESS FZ-LLC" />
+
+  <style>
+    /* Minimal & professional */
+    :root{
+      --bg:#ffffff;
+      --text:#0b1220;
+      --muted:#6b7280;
+      --accent:#ef6c00; /* naranja ciclismo */
+      --surface:#f7f8fa;
+      --card:#ffffff;
+      --maxw:1100px;
+      --radius:12px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:var(--surface);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+    a{color:var(--accent); text-decoration:none}
+    img{max-width:100%;height:auto;display:block}
+
+    .container{max-width:var(--maxw);margin:0 auto;padding:28px;}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:6px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,#0b1220,var(--accent));
+      display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:18px;
+      box-shadow:0 8px 24px rgba(11,18,32,0.06);
+    }
+    .brand h1{margin:0;font-size:18px;letter-spacing:0.3px}
+    nav{display:flex;gap:16px;align-items:center}
+    nav a{font-size:14px;color:var(--muted)}
+
+    /* Hero */
+    .hero{
+      display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:center;margin:28px 0;
+    }
+    .hero-main{
+      background:var(--card);padding:36px;border-radius:14px;box-shadow:0 12px 36px rgba(11,18,32,0.04);
+    }
+    .kicker{color:var(--accent);font-weight:700;font-size:13px;letter-spacing:0.6px;margin-bottom:10px}
+    .hero-main h2{margin:0 0 12px;font-size:32px;line-height:1.04}
+    .lead{color:var(--muted);margin:0 0 18px}
+
+    .hero-side{
+      background:#fff;border-radius:12px;padding:18px;border:1px solid #eef1f4;
+    }
+    .subscribe input[type="email"]{width:100%;padding:12px;border-radius:10px;border:1px solid #e6e9ee;margin-bottom:10px;font-size:14px}
+
+    .btn{
+      display:inline-block;padding:10px 14px;border-radius:10px;font-weight:700;border:0;cursor:pointer;font-size:14px;
+    }
+    .btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 24px rgba(239,108,0,0.12)}
+    .btn-outline{background:transparent;border:1px solid #e9eef0;color:var(--text)}
+
+    /* Cards / Grid */
+    .grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:26px 0;
+    }
+    .card{
+      background:var(--card);border-radius:12px;padding:16px;border:1px solid #f3f5f7;box-shadow:0 8px 20px rgba(11,18,32,0.03);
+    }
+    .card h3{margin:0 0 8px;font-size:16px}
+    .meta{color:var(--muted);font-size:13px;margin-bottom:8px}
+
+    /* Two-column layout */
+    .two-col{display:grid;grid-template-columns:1fr 360px;gap:22px;align-items:start}
+
+    /* Footer / legal */
+    footer{margin-top:36px;padding:28px;background:#0b0f13;color:#e6f7f6;border-radius:12px}
+    .footer-grid{display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between}
+    .footer-col{min-width:220px}
+    .muted{color:#9fb3b5;font-size:14px}
+
+    /* cookie */
+    #cookie{position:fixed;left:16px;right:16px;bottom:18px;background:#fff;border-radius:12px;padding:12px;box-shadow:0 12px 40px rgba(2,6,23,0.12);max-width:980px;margin:auto;display:flex;gap:12px;align-items:center;z-index:999}
+
+    /* Responsive */
+    @media (max-width:1000px){
+      .hero{grid-template-columns:1fr}
+      .two-col{grid-template-columns:1fr}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      nav{display:none}
+    }
+    @media (max-width:640px){
+      .grid{grid-template-columns:1fr}
+      header{flex-direction:column;align-items:flex-start;gap:12px}
+      .footer-grid{flex-direction:column}
+    }
+
+    /* Utilities */
+    .muted-small{color:var(--muted);font-size:13px}
+    .separator{height:1px;background:#f3f5f7;margin:18px 0;border-radius:2px}
+    .chip{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid #f3f5f7;font-weight:700;font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand" aria-label="suenergiacolombia">
+        <div class="logo" aria-hidden="true">SC</div>
+        <div>
+          <h1>suenergiacolombia</h1>
+          <div class="muted-small">Ciclismo • Rutas • Entrenamiento</div>
+        </div>
+      </div>
+
+      <nav aria-label="Navegación principal">
+        <a href="#rutas">Rutas</a>
+        <a href="#entrenamiento">Entrenamiento</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#legal">Políticas</a>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" aria-label="Presentación">
+      <div class="hero-main">
+        <div class="kicker">CONFIABLE Y PRÁCTICO</div>
+        <h2>Rutas, técnica y entrenamiento para ciclistas en Colombia</h2>
+        <p class="lead">Publicamos guías de rutas, análisis de entrenamiento, reseñas de material y recursos para clubes y ciclistas urbanos y de ruta. Contenido profesional y actualizado.</p>
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-primary" href="#rutas">Explorar rutas</a>
+          <a class="btn btn-outline" href="#contacto">Colabora</a>
+        </div>
+      </div>
+
+      <aside class="hero-side" aria-labelledby="subscribeTitle">
+        <div id="subscribeTitle" style="font-weight:700;margin-bottom:8px">Boletín mensual</div>
+        <div class="muted-small">Recibe rutas destacadas, entrenamientos y descuentos de patrocinadores responsables.</div>
+
+        <form id="subscribeForm" class="subscribe" style="margin-top:12px" aria-label="Formulario de suscripción">
+          <label for="email" class="muted-small">Correo electrónico</label>
+          <input id="email" type="email" placeholder="tu@correo.com" required />
+          <button class="btn btn-primary" style="width:100%;margin-top:8px" type="submit">Suscribirme</button>
+          <div id="subMsg" class="muted-small" style="margin-top:10px"></div>
+        </form>
+
+        <div style="margin-top:14px" class="muted-small">
+          Transparencia: política de privacidad, términos y datos de verificación visibles en el footer.
+        </div>
+      </aside>
+    </section>
+
+    <!-- Rutas / Artículos -->
+    <section id="rutas" aria-label="Rutas y artículos">
+      <div style="display:flex;justify-content:space-between;align-items:end">
+        <h2 style="margin:0">Rutas y artículos</h2>
+        <a href="#archive" class="muted-small">Archivo →</a>
+      </div>
+
+      <div class="grid" role="list" aria-busy="false">
+        <article class="card" role="listitem">
+          <div class="meta">Guía · 01 marzo 2026</div>
+          <h3>Ruta: Bogotá - La Calera (retos y consejos)</h3>
+          <p class="muted-small">Perfil, puntos de interés y recomendaciones de seguridad para la ascensión.</p>
+        </article>
+
+        <article class="card" role="listitem">
+          <div class="meta">Entrenamiento · 18 febrero 2026</div>
+          <h3>Intervalos específicos para mejorar FTP</h3>
+          <p class="muted-small">Sesiones estructuradas y progresiones para ciclistas de ruta.</p>
+        </article>
+
+        <article class="card" role="listitem">
+          <div class="meta">Equipo · 02 febrero 2026</div>
+          <h3>Qué buscar en una bicicleta de gravel</h3>
+          <p class="muted-small">Comparativa de geometrías, neumáticos y accesorios esenciales.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Recursos y contacto -->
+    <section class="two-col" aria-label="Recursos y contacto">
+      <div>
+        <h3>Recursos útiles</h3>
+        <p class="muted-small">Mapas GPX, plantillas de entrenamiento descargables y guías de mantenimiento básico.</p>
+
+        <div class="separator"></div>
+
+        <h4>Colaboraciones</h4>
+        <p class="muted-small">Trabajamos con clubes locales, entrenadores y marcas para proyectos editoriales y campañas, siempre divulgadas con transparencia.</p>
+      </div>
+
+      <aside id="contacto" class="hero-side" aria-labelledby="contactoTitle">
+        <div id="contactoTitle" style="font-weight:700">Contacto</div>
+        <p class="muted-small">Consultas editoriales, propuestas de colaboración o publicidad: usa el formulario o escribe directamente.</p>
+
+        <form id="contactForm" aria-label="Formulario de contacto">
+          <label for="cname" class="muted-small">Nombre</label>
+          <input id="cname" type="text" placeholder="Tu nombre" required />
+
+          <label for="cmail" class="muted-small">Correo</label>
+          <input id="cmail" type="email" placeholder="tu@correo.com" required />
+
+          <label for="cmsg" class="muted-small">Mensaje</label>
+          <textarea id="cmsg" placeholder="Escribe tu consulta..." required style="min-height:120px"></textarea>
+
+          <button class="btn btn-primary" style="width:100%;margin-top:8px" type="submit">Enviar</button>
+          <div id="contactMsg" class="muted-small" style="margin-top:10px"></div>
+        </form>
+
+        <div style="margin-top:12px" class="muted-small">
+          Contacto directo: Morgane PHILBERT — <a href="mailto:mo.philbert33@gmail.com">mo.philbert33@gmail.com</a>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Políticas y términos -->
+    <section id="legal" aria-label="Políticas y términos">
+      <h3>Políticas y términos</h3>
+
+      <div class="card" style="margin-top:12px">
+        <h4 id="privacy">Política de privacidad</h4>
+        <p class="muted-small">Recolectamos datos mínimos para suscripciones y contacto (nombre, correo, mensaje). No vendemos información; solo compartimos con proveedores que cumplen con obligaciones de privacidad o por requerimiento legal. Para solicitudes de acceso, rectificación o eliminación escribe a <a href="mailto:mo.philbert33@gmail.com">mo.philbert33@gmail.com</a>.</p>
+
+        <h4 id="cookies" style="margin-top:12px">Política de cookies</h4>
+        <p class="muted-small">Usamos cookies esenciales y de análisis anónimo. Los usuarios pueden aceptar o gestionar preferencias mediante el control de cookies disponible en la página.</p>
+
+        <h4 id="terms" style="margin-top:12px">Términos y condiciones</h4>
+        <p class="muted-small">El contenido es informativo; no sustituye asesoría profesional. El uso del sitio implica aceptación de estos términos. Para usos comerciales del contenido, contacte al equipo editorial para acuerdos por escrito.</p>
+
+        <h4 style="margin-top:12px">Publicidad y divulgación</h4>
+        <p class="muted-small">Cualquier contenido patrocinado o afiliado será claramente marcado. Publicamos datos de verificación del anunciante y datos de contacto en el footer para transparencia con plataformas publicitarias.</p>
+      </div>
+    </section>
+
+    <!-- Verificación del anunciante -->
+    <section aria-labelledby="advVerify" style="margin-top:18px">
+      <h4 id="advVerify">Verificación del anunciante</h4>
+      <div class="card" style="margin-top:8px">
+        <p class="muted-small"><strong>Nombre de verificación:</strong> JUAN JOSE GUAIGUA GARCIA</p>
+        <p class="muted-small"><strong>Dirección:</strong> c9 #48, El Alto, Bolivia</p>
+        <p class="muted-small">Estos datos se publican por transparencia y cumplimiento con requisitos publicitarios.</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer aria-label="Pie de página">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div style="font-weight:800">suenergiacolombia</div>
+          <div class="muted">Blog de ciclismo — rutas, entrenamiento y comunidad.</div>
+        </div>
+
+        <div class="footer-col">
+          <div style="font-weight:700">Organización</div>
+          <div class="muted-small">
+            TECH ACCESS FZ-LLC<br>
+            Offices G01 and G03, Building Number 1, Dubai Internet City<br>
+            Dubai, Emiratos Árabes Unidos
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <div style="font-weight:700">Contacto</div>
+          <div class="muted-small">
+            Morgane PHILBERT<br>
+            <a href="mailto:mo.philbert33@gmail.com">mo.philbert33@gmail.com</a>
+          </div>
+
+          <div style="margin-top:12px">
+            <div style="font-weight:700">Verificación anunciante</div>
+            <div class="muted-small">JUAN JOSE GUAIGUA GARCIA — c9 #48, El Alto, Bolivia</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div class="muted-small">© <span id="year"></span> TECH ACCESS FZ-LLC. Todos los derechos reservados.</div>
+        <div class="muted-small">Política de privacidad • Términos • Contacto accesibles</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Cookie banner -->
+  <div id="cookie" role="dialog" aria-live="polite" class="hidden">
+    <div style="flex:1">
+      <div style="font-weight:700">Uso de cookies</div>
+      <div class="muted-small">Usamos cookies para funciones esenciales, análisis anónimo y preferencias. Puedes aceptar o gestionar preferencias.</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <button id="manageCookies" class="btn btn-outline">Gestionar</button>
+      <button id="acceptCookies" class="btn btn-primary">Aceptar</button>
+    </div>
+  </div>
+
+  <script>
+    // año dinámico
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Cookie banner logic
+    const cookieEl = document.getElementById('cookie');
+    if (!localStorage.getItem('suenergiacol_cookies_ok')) {
+      cookieEl.classList.remove('hidden');
+    }
+    document.getElementById('acceptCookies').addEventListener('click', () => {
+      localStorage.setItem('suenergiacol_cookies_ok','1');
+      cookieEl.classList.add('hidden');
+    });
+    document.getElementById('manageCookies').addEventListener('click', () => {
+      alert('En producción, aquí se mostrarían preferencias de cookies para aceptar o rechazar categorías.'); // placeholder
+    });
+
+    // Suscripción (simulada)
+    document.getElementById('subscribeForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('subMsg');
+      if (!/^\S+@\S+\.\S+$/.test(email)) {
+        msg.textContent = 'Introduce un correo válido.';
+        return;
+      }
+      msg.textContent = 'Gracias. Revisa tu correo para confirmar la suscripción.';
+      e.target.reset();
+    });
+
+    // Contacto (simulado)
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('cname').value.trim();
+      const email = document.getElementById('cmail').value.trim();
+      const message = document.getElementById('cmsg').value.trim();
+      const out = document.getElementById('contactMsg');
+      if (!name || !email || !message) {
+        out.textContent = 'Completa todos los campos.';
+        return;
+      }
+      if (!/^\S+@\S+\.\S+$/.test(email)) {
+        out.textContent = 'Correo no válido.';
+        return;
+      }
+      out.innerHTML = '<div style="background:#eaf9f6;border-left:4px solid '+getComputedStyle(document.documentElement).getPropertyValue("--accent")+';padding:10px;border-radius:6px;color:#083a33">Mensaje recibido. Gracias por contactarnos.</div>';
+      e.target.reset();
+    });
+
+    // Accessibility: keyboard focus hint
+    (function(){
+      function onFirstTab(e){
+        if (e.key === 'Tab') {
+          document.documentElement.classList.add('user-is-tabbing');
+          window.removeEventListener('keydown', onFirstTab);
+        }
+      }
+      window.addEventListener('keydown', onFirstTab);
+    })();
+
+    console.log('suenergiacolombia — página cargada con políticas y contacto visibles.');
+  </script>
+
+  <!-- JSON-LD: organización (transparencia) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"TECH ACCESS FZ-LLC",
+    "address":{
+      "@type":"PostalAddress",
+      "streetAddress":"Offices G01 and G03, Building Number 1, Dubai Internet City",
+      "addressLocality":"Dubai",
+      "addressCountry":"AE"
+    },
+    "contactPoint":[
+      {
+        "@type":"ContactPoint",
+        "contactType":"editorial",
+        "email":"mo.philbert33@gmail.com",
+        "name":"Morgane PHILBERT"
+      }
+    ]
+  }
+  </script>
+</body>
+</html>
